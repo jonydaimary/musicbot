@@ -313,7 +313,7 @@ Playing: ${serverQueue.songs[0].title}`)
     }
     else if(msg.content.startsWith(`${PREFIX}help`)){
         var embedhelp = new Discord.RichEmbed()
-            .setTitle(`__marcos-MusicBot Commands__`)
+            .setTitle(`marcos-MusicBot Commands`)
             .addField("play [YouTube Link/Playlist]", "Usage: `!!play` Description: To play See The YouTube Linke And playlist.", false)
             .addField("play [Suchbegriff(e)]", "Usage: `!!play`<song name> Description: To play Music.", false)
             .addField("skip", "Usage: `!!skip` Description: To skip music.", false)
@@ -377,7 +377,7 @@ async function handleVideo(video, msg, voiceChannel, playlist=false){
         if(playlist) return undefined;
         else{
             var embedfunc2 = new Discord.RichEmbed()
-                .setTitle(`**${song.title} queued!**`)
+                .setTitle(`${song.title} queued!`)
                 .setColor([226, 50, 41])
             return msg.channel.sendEmbed(embedfunc2);
         }
