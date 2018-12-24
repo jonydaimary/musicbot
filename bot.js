@@ -176,7 +176,7 @@ ${videos.map(video2 => `${++index}- ${video2.title}`).join('\n')}
         serverQueue.songs = [];
         serverQueue.connection.dispatcher.end('Stop command has been used!');
         var embedstop3 = new Discord.RichEmbed()
-            .setTitle(`The Bot has been Skipped!`)
+            .setTitle(`⏩Skipped👍`)
             .setColor([226, 50, 41])
         return msg.channel.sendEmbed(embedstop3);
     }
