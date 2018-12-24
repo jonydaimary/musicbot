@@ -55,6 +55,113 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 })
 
 
+
+
+
+
+
+
+
+client.on('message', async msg => { // eslint-disable-line
+    if (msg.author.bot) return undefined;
+    if (!msg.content.startsWith(PREFIX)) return undefined;
+    const args = msg.content.split(' ');
+    const searchString = args.slice(1).join(' ');
+    const url = args[1];
+    const serverQueue = queue.get(msg.guild.id);
+    
+    if(msg.content.startsWith(`${PREFIX}p`)){
+        const voiceChannel = msg.member.voiceChannel;
+        if(!voiceChannel){
+            var embedplay1 = new Discord.RichEmbed()
+                .setTitle(`**Please Connect To A Voice Channel To Play Something!**`)
+                .setColor([226, 50, 41])
+            return msg.channel.sendEmbed(embedplay1);
+        }
+        const permissions = voiceChannel.permissionsFor(msg.client.user);
+        if(!permissions.has('CONNECT')){
+            var embedplay2 = new Discord.RichEmbed()
+                .setTitle(`**I lack the right CONNECT to connect in these Voice Channel!**`)
+                .setColor([226, 50, 41])
+            return msg.channel.sendEmbed(embedplay2);
+        }
+        if (!permissions.has('SPEAK')){
+            var embedplay3 = new Discord.RichEmbed()
+                .setTitle(`**I do not have the right to SPEAK to connect in these Voice Channel!**`)
+                .setColor([226, 50, 41])
+            return msg.channel.sendEmbed(embedplay3);
+        }
+        
+        if(url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)){
+            const playlist = await youtube.getPlaylist(url);
+            const videos = await playlist.getVideos();
+            for(const video of Object.values(videos)){
+                const video2 = await youtube.getVideoByID(video.id);
+                await handleVideo(video2, msg, voiceChannel, true);
+            }
+            var embedplay4 = new Discord.RichEmbed()
+                .setTitle(`**Playlist: ${playlist.title} queued!**`)
+                .setColor([226, 50, 41])
+            return msg.channel.sendEmbed(embedplay4);
+        }else{
+            try{
+                var video = await youtube.getVideo(url);
+            }catch(error){
+                try{
+                    var videos = await youtube.searchVideos(searchString, 10);
+                    let index = 0;
+                    var embedqueue5 = new Discord.RichEmbed()
+                        .setTitle(`Song Play By Blackfox`)
+                        .setDescription(`
+${videos.map(video2 => `**${++index}-** ${video2.title}`).join('\n')}
+
+**Please enter a number between 1-10 on,a Song select!**`)
+                .setColor([226, 50, 41])
+                    msg.channel.sendEmbed(embedqueue5);
+                    
+                    try{
+                       var response = await msg.channel.awaitMessages(msg2 => msg2.content > 0 && msg2.content < 11, {
+                           maxMatches: 1,
+                           time: 10000,
+                           errors: ['time']
+                       }); 
+                    }catch(err){
+                        console.error(err);
+                        var embedplay6 = new Discord.RichEmbed()
+                            .setTitle(`no or invalid number was entered. Demolition of the song selection!`)
+                            .setColor([226, 50, 41])
+                        return msg.channel.sendEmbed(embedplay6);
+                    }
+                    const videoIndex = parseInt(response.first().content);
+                    var video = await youtube.getVideoByID(videos[videoIndex - 1].id);
+                }catch(err){
+                    console.error(err);
+                    var embedplay7 = new Discord.RichEmbed()
+                        .setTitle(`**I could find no video!**`)
+                        .setColor([226, 50, 41])
+                    return msg.channel.sendEmbed(embedplay7);
+                }
+            }
+            return handleVideo(video, msg, voiceChannel);
+        }
+    
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 client.on('message', async msg => { // eslint-disable-line
     if (msg.author.bot) return undefined;
     if (!msg.content.startsWith(PREFIX)) return undefined;
