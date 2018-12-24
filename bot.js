@@ -68,7 +68,7 @@ client.on('message', async msg => { // eslint-disable-line
         if(!voiceChannel){
             var embedplay1 = new Discord.RichEmbed()
                 .setTitle(`Please Connect To A Voice Channel To Play Something!`)
-                .setColor([226, 50, 41])
+                .setColor(['GREEN'])
             return msg.channel.sendEmbed(embedplay1);
         }
         const permissions = voiceChannel.permissionsFor(msg.client.user);
@@ -133,7 +133,7 @@ ${videos.map(video2 => `${++index}- ${video2.title}`).join('\n')}
                     console.error(err);
                     var embedplay7 = new Discord.RichEmbed()
                         .setTitle(`I could find no video!`)
-                        .setColor([226, 50, 41])
+                        .setColor(['GREEN'])
                     return msg.channel.sendEmbed(embedplay7);
                 }
             }
