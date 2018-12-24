@@ -409,7 +409,7 @@ function play(guild, song){
     dispatcher.setVolume(serverQueue.volume / 2000);
     
     var embedfunction1 = new Discord.RichEmbed()
-                .setTitle(`Playing :notes: ${song.title} -now`)
+                .setTitle(`Playing 🎶 ${song.title} -now`)
                 .setColor([226, 50, 41])
             return serverQueue.textChannel.sendEmbed(embedfunction1);
 }
