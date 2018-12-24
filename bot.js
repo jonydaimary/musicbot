@@ -103,7 +103,7 @@ client.on('message', async msg => { // eslint-disable-line
                     var videos = await youtube.searchVideos(searchString, 10);
                     let index = 0;
                     var embedqueue5 = new Discord.RichEmbed()
-                        .setTitle(`__Song Play By marcos__`)
+                        .setTitle(`Song Play By marcos`)
                         .setDescription(`
 ${videos.map(video2 => `${++index}- ${video2.title}`).join('\n')}
 
@@ -203,7 +203,7 @@ Link: ${serverQueue.songs[0].url}
             return msg.channel.sendEmbed(embedvolume1);}
         if(!args[1]){
              var embedvolume2 = new Discord.RichEmbed()
-                .setTitle(`**The current volume is: ${serverQueue.volume}**`)
+                .setTitle(`The current volume is: ${serverQueue.volume}`)
                 .setColor([226, 50, 41])
             return msg.channel.sendEmbed(embedvolume2);
         }
@@ -233,7 +233,7 @@ Link: ${serverQueue.songs[0].url}
         var embedqueue2 = new Discord.RichEmbed()
                 .setTitle(`Song Queue`)
                 .setDescription(`
-${serverQueue.songs.map(song => `**-** ${song.title}`).join('\n')}
+${serverQueue.songs.map(song => `- ${song.title}`).join('\n')}
 
 Playing: ${serverQueue.songs[0].title}`)
                 .setColor([226, 50, 41])
