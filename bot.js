@@ -96,7 +96,7 @@ client.on('message', async msg => { // eslint-disable-line
             }
             var embedplay4 = new Discord.RichEmbed()
                 .setTitle(`Playlist: ${playlist.title} queued!`)
-                .setColor([226, 50, 41])
+                .setColor(['GREEN'])
             return msg.channel.sendEmbed(embedplay4);
         }else{
             try{
@@ -106,12 +106,12 @@ client.on('message', async msg => { // eslint-disable-line
                     var videos = await youtube.searchVideos(searchString, 10);
                     let index = 0;
                     var embedqueue5 = new Discord.RichEmbed()
-                        .setTitle(`Song Play By marcos`)
+                        .setTitle(`Song Play list*`)
                         .setDescription(`
 ${videos.map(video2 => `${++index}- ${video2.title}`).join('\n')}
 
-**Please enter a number between 1-10 on,a Song select!**`)
-                .setColor([226, 50, 41])
+Please enter a number between 1-10 on,a Song select!`)
+                .setColor(['GREEN'])
                     msg.channel.sendEmbed(embedqueue5);
                     
                     try{
