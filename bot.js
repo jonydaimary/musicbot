@@ -329,7 +329,7 @@ Playing: ${serverQueue.songs[0].title}`)
             .addField("resume", "Usage: `!!resume` Description: To Resume The Paused Song.", false)
             .addField("mute", "Usage: `!!mute` Description: To mute Bot.", false)
             .addField("unmute", "Usage: `!!unmute` Description: To unmute Bot.", false)
-            .setColor([226, 50, 41])
+            .setColor(['GREEN'])
             .setThumbnail(client.user.avatarURL)
             return msg.channel.sendEmbed(embedhelp);
     }
