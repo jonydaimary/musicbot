@@ -54,6 +54,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
   }
 })
 
+
 client.on('message', async msg => { // eslint-disable-line
     if (msg.author.bot) return undefined;
     if (!msg.content.startsWith(PREFIX)) return undefined;
@@ -84,6 +85,41 @@ client.on('message', async msg => { // eslint-disable-line
             return msg.channel.sendEmbed(embedplay3);
         }
         
+      
+      
+      
+      
+      
+      
+    if(msg.content.startsWith(`${PREFIX}p`)){
+        const voiceChannel = msg.member.voiceChannel;
+        if(!voiceChannel){
+            var embedplay1 = new Discord.RichEmbed()
+                .setTitle(`Please Connect To A Voice Channel To Play Something!`)
+                .setColor([226, 50, 41])
+            return msg.channel.sendEmbed(embedplay1);
+        }
+        const permissions = voiceChannel.permissionsFor(msg.client.user);
+        if(!permissions.has('CONNECT')){
+            var embedplay2 = new Discord.RichEmbed()
+                .setTitle(`I lack the right CONNECT to connect in these Voice Channel!`)
+                .setColor([226, 50, 41])
+            return msg.channel.sendEmbed(embedplay2);
+        }
+        if (!permissions.has('SPEAK')){
+            var embedplay3 = new Discord.RichEmbed()
+                .setTitle(`I do not have the right to SPEAK to connect in these Voice Channel!`)
+                .setColor([226, 50, 41])
+            return msg.channel.sendEmbed(embedplay3);
+        }
+
+      
+      
+      
+      
+      
+      
+      
         if(url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)){
             const playlist = await youtube.getPlaylist(url);
             const videos = await playlist.getVideos();
