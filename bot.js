@@ -152,7 +152,7 @@ ${videos.map(video2 => `${++index}- ${video2.title}`).join('\n')}
         }
         serverQueue.connection.dispatcher.end('Skip command has been used!');
         var embedskip3 = new Discord.RichEmbed()
-            .setTitle(`The Bot has been Skipped!`)
+            .setTitle(`⏩Skipped👍`)
             .setColor([226, 50, 41])
         return msg.channel.sendEmbed(embedskip3);
     }   
