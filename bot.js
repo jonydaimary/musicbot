@@ -351,7 +351,7 @@ async function handleVideo(video, msg, voiceChannel, playlist=false){
             voiceChannel: voiceChannel,
             connection: null,
             songs: [],
-            volume: 1200,
+            volume: 1500,
             mute: false,
             playing: true
         };
@@ -367,7 +367,7 @@ async function handleVideo(video, msg, voiceChannel, playlist=false){
             console.log(error);
             queue.delete(msg.guild.id);
             var embedfunc1 = new Discord.RichEmbed()
-                .setTitle(`**Bot could not VoiceChannel the joinen!**`)
+                .setTitle(`Bot could not VoiceChannel the join!`)
                 .setColor([226, 50, 41])
             return msg.channel.sendEmbed(embedfunc1);
         }
@@ -409,7 +409,7 @@ function play(guild, song){
     dispatcher.setVolume(serverQueue.volume / 2000);
     
     var embedfunction1 = new Discord.RichEmbed()
-                .setTitle(`** Begin ${song.title} to play**`)
+                .setTitle(`Begin ${song.title} to play`)
                 .setColor([226, 50, 41])
             return serverQueue.textChannel.sendEmbed(embedfunction1);
 }
