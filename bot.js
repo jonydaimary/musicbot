@@ -314,7 +314,7 @@ Playing: ${serverQueue.songs[0].title}`)
         return msg.channel.sendEmbed(embedunmute3);
         }
     }
-    else if(msg.content.startsWith(`${PREFIX}help`)){
+    else if(msg.content.startsWith(`${PREFIX}helpmusic`)){
         var embedhelp = new Discord.RichEmbed()
             .setTitle(`marcos-MusicBot Commands`)
             .addField("play [YouTube Link/Playlist]", "Usage: `!!play` Description: To play See The YouTube Linke And playlist.", false)
