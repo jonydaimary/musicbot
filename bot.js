@@ -63,7 +63,7 @@ client.on('message', async msg => { // eslint-disable-line
     const url = args[1];
     const serverQueue = queue.get(msg.guild.id);
     
-    if(msg.content.startsWith(`${PREFIX}play`)){
+    if(msg.content.startsWith(`${PREFIX}p`)){
         const voiceChannel = msg.member.voiceChannel;
         if(!voiceChannel){
             var embedplay1 = new Discord.RichEmbed()
@@ -140,7 +140,7 @@ Please enter a number between 1-10 on,a Song select!`)
             return handleVideo(video, msg, voiceChannel);
         }
     
-    } else if(msg.content.startsWith(`${PREFIX}skip`)) {
+    } else if(msg.content.startsWith(`${PREFIX}s`)) {
         if(!msg.member.voiceChannel){
            var embedskip1 = new Discord.RichEmbed()
                 .setTitle(`You are in not in the Voice Channel!`)
