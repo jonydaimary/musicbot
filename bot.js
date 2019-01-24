@@ -68,7 +68,7 @@ client.on('message', async msg => { // eslint-disable-line
         if(!voiceChannel){
             var embedplay1 = new Discord.RichEmbed()
                 .setTitle(`Please Connect To A Voice Channel To Play Something!`)
-                .setColor(['GREEN'])
+                .setColor(['f9fcfc'])
             return msg.channel.sendEmbed(embedplay1);
         }
         const permissions = voiceChannel.permissionsFor(msg.client.user);
