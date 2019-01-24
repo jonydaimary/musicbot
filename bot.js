@@ -106,7 +106,7 @@ client.on('message', async msg => { // eslint-disable-line
                     var videos = await youtube.searchVideos(searchString, 10);
                     let index = 0;
                     var embedqueue5 = new Discord.RichEmbed()
-                        .setTitle(`Song Play list*`)
+                        .setTitle(`Song Play list`)
                         .setDescription(`
 ${videos.map(video2 => `${++index}- ${video2.title}`).join('\n')}
 
