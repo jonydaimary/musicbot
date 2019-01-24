@@ -116,7 +116,7 @@ Please enter a number between 1-10 on,a Song select!`)
                     
                     try{
                        var response = await msg.channel.awaitMessages(msg2 => msg2.content > 0 && msg2.content < 11, {
-                           maxMatches: 1,
+                           maxMatches: 10,
                            time: 10000,
                            errors: ['time']
                        }); 
